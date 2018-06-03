@@ -84,15 +84,14 @@ class Books extends React.Component {
     }
 
     addKeyToUser(id){
-        // let arrCopy = [...this.state.users[0].user_books_id];
+        let arrCopy = [...this.state];
         let arrCopy2 = this.state.users[0].user_books_id;
 
         arrCopy2.push(id);
-        this.setState(arrCopy2)
-        // this.setState( { user_books_id: arrCopy});
-        console.log('___ book ID', this.state.users[0].user_books_id);
+        this.setState(arrCopy)
+        console.log('___ STATE', this.state);
         console.log('___ id', id);
-        console.log('___ STATE', this.state.users[0]);
+        console.log('___ STATE_USERS', this.state.users[0]);
     };
 
 
@@ -115,25 +114,18 @@ class Books extends React.Component {
             />
         
         } );
+        
+    let arrCopyBook = [...this.state.users];
 
-        const writeBookToId = this.state.users[0].user_books_id.map((item, index) => {
-                       
-            if ( item === this.state.books[0].book[index].id ){
-                let uli = this.state.books[0].book[index].name_book;
+        const writeBookToId = arrCopyBook[0].user_books_id.map((item, index) => {
+
+            if ( item === this.state.books[index].book[index].id ){
+                let uli = this.state.books[index].book[index].name_book;
                 return (
-                    <li>{uli}</li>
+                    <li key={index}>{ uli }{ console.log('___ULI',uli)}</li>
+                    
                 )
-            } else if ( item === this.state.books[1].book[index].id ){
-                let uli = this.state.books[1].book[index].name_book;
-                return (
-                    <li>{uli}</li>
-                )
-            } else if ( item === this.state.books[2].book[index].id ){
-                let uli = this.state.books[2].book[index].name_book;
-                return (
-                    <li>{uli}</li>
-                )
-            }
+            } 
             
         })
 
