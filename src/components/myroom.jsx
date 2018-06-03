@@ -13,10 +13,3 @@ class MyRoom extends React.Component {
 }
 
 export default MyRoom;
-
-
-
-
-
-
-
